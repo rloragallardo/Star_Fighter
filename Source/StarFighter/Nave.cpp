@@ -47,4 +47,5 @@ void ANave::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+hola mundo 
 
