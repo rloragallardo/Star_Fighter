@@ -14,7 +14,7 @@ class STARFIGHTER_API AEnemigoAereo3 : public ANaveAerea
 {
 	GENERATED_BODY()
 		void Tick(float DeltaSeconds);
-public:
+/*public:
 	float MovementX;
-	float MovementY;
+	float MovementY;*/
 };

@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "time.h"
+//#include "time.h"
 #include "EnemigoAereo3.h"
 
 void AEnemigoAereo3::Tick(float DeltaSeconds)
 {
-	srand(time(NULL));
+	/*srand(time(NULL));
 
 	//MovementX = rand() % 12 - 5;
 	MovementY = rand() % 12 - 5;
@@ -22,5 +22,5 @@ void AEnemigoAereo3::Tick(float DeltaSeconds)
 
 		FHitResult Hit(1.0f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
-	}
+	}*/
 }

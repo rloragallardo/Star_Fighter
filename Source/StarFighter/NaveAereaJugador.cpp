@@ -50,11 +50,11 @@ ANaveAereaJugador::ANaveAereaJugador()
 		//FTransform SpawnLocation;
 		// spawn the projectile
 		
+		/*ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
-		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
-		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
+		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));*/
 
 		//UE_LOG(LogTemp, Warning, TEXT("SpawnLocation(X, Y) = %s, %s FireRotation(X, Y) =  s, s"), SpawnLocation.X, SpawnLocation.Y);
 		//UE_LOG(LogTemp, Warning, TEXT("World not nullptr"));

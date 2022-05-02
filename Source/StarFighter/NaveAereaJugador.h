@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NaveAerea.h"
-#include "Cola.h"
+//#include "Cola.h"
 
 #include "NaveAereaJugador.generated.h"
 
@@ -27,7 +27,7 @@ class STARFIGHTER_API ANaveAereaJugador : public ANaveAerea
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class USpringArmComponent* CameraBoom;
 
-	Cola<class AProyectil*> ColaProyectiles;
+	//Cola<class AProyectil*> ColaProyectiles;
 
 public:
 	ANaveAereaJugador();
