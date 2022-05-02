@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "time.h"
 #include "EnemigoAereo2.h"
+#include "time.h"
+
 
 void AEnemigoAereo2::Tick(float DeltaSeconds)
 {
