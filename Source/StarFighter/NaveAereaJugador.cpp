@@ -3,7 +3,8 @@
 
 #include "NaveAereaJugador.h"
 #include "Proyectil.h"
-
+#include "Bala.h"
+#include "Rayo.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -51,7 +52,7 @@ ANaveAereaJugador::ANaveAereaJugador()
 		// spawn the projectile
 		
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
-		/*ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
+		/*ColaProyectiles.Push(World->SpawnActor<ABala>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));
 		ColaProyectiles.Push(World->SpawnActor<AProyectil>(SpawnLocation, FireRotation));*/
@@ -70,6 +71,8 @@ void ANaveAereaJugador::SetupPlayerInputComponent(class UInputComponent* PlayerI
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	//PlayerInputComponent->BindAction(Fire)
 	InputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ANaveAereaJugador::Fire);
+	InputComponent->BindAction(TEXT("FireB"), IE_Pressed, this, &ANaveAereaJugador::FireB);
+	InputComponent->BindAction(TEXT("FireC"), IE_Pressed, this, &ANaveAereaJugador::FireC);
 	//PlayerInputComponent->BindAction(FireBinding);
 	//PlayerInputComponent->BindAxis(FireForwardBinding);
 	//PlayerInputComponent->BindAxis(FireRightBinding);
@@ -171,4 +174,103 @@ void ANaveAereaJugador::FireShot(FVector FireDirection)
 void ANaveAereaJugador::ShotTimerExpired()
 {
 	bCanFire = true;
+}
+void ANaveAereaJugador::FireB() {
+	bCanFire = true;
+	UE_LOG(LogTemp, Warning, TEXT("Se presiono intro"));
+	// Create fire direction vector
+
+	UE_LOG(LogTemp, Warning, TEXT("FireForwardValue: %f FireRightValue: %f"), FireForwardValue, FireRightValue);
+	const FVector FireDirectionB = FVector(FireForwardValue, FireRightValue, 0.f).GetClampedToMaxSize(1.0f);
+	//const FVector FireDirection = GetActorLocation();
+	// Try and fire a shot
+	FireShotB(FireDirectionB);
+}
+void ANaveAereaJugador::FireShotB(FVector FireDirectionB)
+{
+	// If it's ok to fire again
+	if (bCanFire == true)
+	{
+
+		// If we are pressing fire stick in a direction
+		//if (FireDirection.SizeSquared() > 0.0f)
+		//{
+		const FRotator FireRotation = FireDirectionB.Rotation();
+		// Spawn projectile at an offset from this pawn
+		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+		UWorld* const World = GetWorld();
+		if (World != nullptr)
+		{
+			// spawn the projectile
+			World->SpawnActor<ABala>(SpawnLocation, FireRotation);
+			//UE_LOG(LogTemp, Warning, TEXT("SpawnLocation(X, Y) = %s, %s FireRotation(X, Y) =  s, s"), SpawnLocation.X, SpawnLocation.Y);
+			//UE_LOG(LogTemp, Warning, TEXT("World not nullptr"));
+		}
+
+
+
+		//bCanFire = false;
+		World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaJugador::ShotTimerExpired, FireRate);
+
+		// try and play the sound if specified
+
+	/*	if (FireSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+		}*/
+
+		bCanFire = false;
+		//}
+	}
+}
+//
+void ANaveAereaJugador::FireC() {
+	bCanFire = true;
+	UE_LOG(LogTemp, Warning, TEXT("Se presiono la ñ"));
+	// Create fire direction vector
+
+	UE_LOG(LogTemp, Warning, TEXT("FireForwardValue: %f FireRightValue: %f"), FireForwardValue, FireRightValue);
+	const FVector FireDirectionC = FVector(FireForwardValue, FireRightValue, 0.f).GetClampedToMaxSize(1.0f);
+	//const FVector FireDirection = GetActorLocation();
+	// Try and fire a shot
+	FireShotC(FireDirectionC);
+}
+void ANaveAereaJugador::FireShotC(FVector FireDirectionC)
+{
+	// If it's ok to fire again
+	if (bCanFire == true)
+	{
+
+		// If we are pressing fire stick in a direction
+		//if (FireDirection.SizeSquared() > 0.0f)
+		//{
+		const FRotator FireRotation = FireDirectionC.Rotation();
+		// Spawn projectile at an offset from this pawn
+		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+		UWorld* const World = GetWorld();
+		if (World != nullptr)
+		{
+			// spawn the projectile
+			World->SpawnActor<ABala>(SpawnLocation, FireRotation);
+			//UE_LOG(LogTemp, Warning, TEXT("SpawnLocation(X, Y) = %s, %s FireRotation(X, Y) =  s, s"), SpawnLocation.X, SpawnLocation.Y);
+			//UE_LOG(LogTemp, Warning, TEXT("World not nullptr"));
+		}
+
+
+
+		//bCanFire = false;
+		World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &ANaveAereaJugador::ShotTimerExpired, FireRate);
+
+		// try and play the sound if specified
+
+	/*	if (FireSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+		}*/
+
+		bCanFire = false;
+		//}
+	}
 }

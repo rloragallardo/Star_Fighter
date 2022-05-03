@@ -12,7 +12,7 @@
 // Sets default values
 AProyectil::AProyectil()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
+	/*static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
 
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -34,7 +34,7 @@ AProyectil::AProyectil()
 	ProjectileMovement->ProjectileGravityScale = 0.f; // No gravity
 
 	// Die after 3 seconds by default
-	InitialLifeSpan = 3.0f;
+	InitialLifeSpan = 3.0f;*/
 }
 
 // Called when the game starts or when spawned
@@ -61,4 +61,3 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 
 	Destroy();
 }
-
