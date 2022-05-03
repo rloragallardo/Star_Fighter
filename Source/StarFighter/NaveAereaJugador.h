@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NaveAerea.h"
-//#include "Cola.h"
+#include "Cola.h"
 
 #include "NaveAereaJugador.generated.h"
 
@@ -52,6 +52,9 @@ public:
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 		float FireRate;
+
+
+	Cola<class AProyectil*> ColaProyectiles;
 
 
 	/** Returns CameraComponent subobject **/
